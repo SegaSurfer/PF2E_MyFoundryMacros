@@ -1,15 +1,15 @@
 /*
-This Macro is a quick and dirty! Solution for the friendly caster next door, who's not able to keep track of his own Spells, DmgTypes and target Saves.
+This macro is a quick and dirty! solution for the friendly caster next door, who's not able to keep track of his own spells, dmgTypes and target saves.
 
 It will query all the current spells in the character sheet (not tested with spell books yet) and will filter these spells for spell level, dmgtype, and save.
 It does simple things and is easy to use.
 
-It is by no far, good written code and I ignored a lot of best practices (please don't look at the var cases or types).
+It's far far away (actually in another galaxy) from well written code and I ignored a lot of best practices (please don't look at the var cases or types).
 It's ugly, it's not really performant, but it does it's job quite good.
 
 IMPORTANT NOTE: You have to have an actor selected or it will horribly crash... 
 doing weird things and forces you to reload your page (if you are lucky). 
-If you are unlucky, it will come to live and will probably end the existence of all living things.. who knows.
+If you are unlucky, it will come to life and will probably end the existence of all living things.. who knows.
 
 I created this abomination, which means that I was naughty and get no presents from Santa... However, I hope my players will still like it ;) 
 
@@ -23,7 +23,7 @@ if (!actor) {
     ui.notifications.warn("You must have an actor selected.");
 }
 
-// Build UI
+// build UI
 
 let savechattext = "";
 let levelchattext = "";
@@ -44,7 +44,7 @@ let dmgtype;
 let dmgtypefilter = "";
 let dmgspells;
 
-//all spell dmg types:
+// all spell dmg types:
 var dmgType = [];
 dmgspells = actor.itemTypes.spell;
 for (var i = 0; i < dmgspells.length; i++) {
@@ -61,7 +61,7 @@ for (var i = 0; i < dmgspells.length; i++) {
 }
 dmgType = [...new Set(dmgType)];
 
-//Build Main dialog dmgtype select
+// Build main dialog dmgtype select
 let maindialogcontentdmgtype ="";
 
 for (var x = 0; x < dmgType.length; x++) {
@@ -70,12 +70,12 @@ for (var x = 0; x < dmgType.length; x++) {
 
 
 new Dialog({
-  title: `Filter a spell in your current (daily) Selection`,
+  title: `Filter a spell in your current (daily) selection`,
   content: `
     <div>
-        Select a filter. Be aware the Spells get filtered by the respected priority of the selections (save -> level -> ...). <br>
-        Results are NOT in any Order! (currently).
-        Furthermore, there are 0 Checks for spell slots yet. 
+        Select a filter. Be aware the spells get filtered by the respected priority of the selections (save -> level -> ...). <br>
+        Results are NOT in order! (currently).
+        Furthermore, there are 0 checks for spell slots yet. 
     </div>
     <hr/>
     <form>
